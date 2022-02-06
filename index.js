@@ -2,10 +2,10 @@ const { Client, Intents, MessageEmbed } = require("discord.js");
 const mongoose = require("mongoose");
 const package = require('./package.json');
 const isUrl = require("url-validator");
-const express = require('express')
+// const express = require('express')
 require('dotenv').config()
-const app = express()
-const port = 3000
+// const app = express()
+// const port = 3000
 
 let data = require('./blacklist.json');
 let users = 0;
@@ -119,11 +119,11 @@ client.on('guildDelete', (guild) =>{
 })
 client.login(process.env['TOKEN'])
 
-// web server for uptime check
-
-app.get('*', (req, res) => {
-    res.send('Bot Online!')
-})
-
-app.listen(process.env.PORT || 3000,
-    () => console.log("Server is running..."));
+// web server for uptime check -- pain
+//
+// app.get('*', (req, res) => {
+//     res.send('Bot Online!')
+// })
+//
+// app.listen(process.env.PORT || 3000,
+//     () => console.log("Server is running..."));
