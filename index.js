@@ -121,10 +121,9 @@ client.login(process.env['TOKEN'])
 
 // web server for uptime check
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.send('Bot Online!')
 })
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
-})
+app.listen(process.env.PORT || 3000,
+    () => console.log("Server is running..."));
