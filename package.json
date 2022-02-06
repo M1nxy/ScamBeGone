@@ -1,0 +1,16 @@
+{
+  "name": "ScamBeGone",
+  "version": "1.1.0",
+  "branch": "main",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.0",
+    "url-validator": "^2.0.3"
+  },
+  "scripts": {
+    "prod": "node index.js",
+    "dev": "nodemon index.js"
+  }
+}
