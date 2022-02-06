@@ -62,9 +62,9 @@ client.on('messageCreate', async (message) => {
     }
     else if(message.content == 'scam!stats'){
         let statsEmbed = new MessageEmbed().setTitle('Stats')
-            .addField('Data',`${client.data.length}`, true)
-            .addField('Users', `${users}`, true)
-            .addField('Guilds', `${guilds}`, true)
+            .addField('Data',`\`${client.data.length}\``, true)
+            .addField('Users', `\`${users}\``, true)
+            .addField('Guilds', `\`${guilds}\``, true)
             .setFooter({ text: `ScamAvoid 1.2.0 by M1nx`})
             .setTimestamp()
 
