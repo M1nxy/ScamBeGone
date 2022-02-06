@@ -1,16 +1,19 @@
 {
   "name": "ScamBeGone",
   "version": "1.1.0",
-  "branch": "main",
+  "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
+    "extract-urls": "^1.3.2",
     "mongoose": "^6.2.0",
-    "url-validator": "^2.0.3"
+    "node-fetch": "^3.2.0",
+    "toad-scheduler": "^1.6.0"
   },
+  "type": "module",
   "scripts": {
-    "prod": "node index.js",
+    "prod": "pm2 start index.js --name ScamBeGone",
     "dev": "nodemon index.js"
   }
 }
