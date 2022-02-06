@@ -28,7 +28,7 @@ client.on('messageCreate', async (message) => {
     if(message.author.bot) return;
     if(message.channel.type == 'DM'){
         let ScamReviewChannel = client.channels.cache.get('939802381229629440') // In the Main Server
-        ScamReviewChannel.send(`\`\`\`${message.content.replaceAll('`', '')} - ${message.author.tag}\`\`\``)
+        ScamReviewChannel.send(`${message.author.id}: \`\`\`${message.content.replaceAll('`', '')} - ${message.author.tag}\`\`\``)
             .then(message => message.react('⬆️'))
             .catch(console.error);
         message.reply('Submitted <3')
