@@ -38,7 +38,7 @@ client.models = [];
 client.on('messageCreate', async (message) => {
     if(message.author.bot) return;
     if(!message.content) return;
-    if(!client.data)
+    if(!client.data) return;
     if(message.channel.type == 'DM'){
         let ScamReviewChannel = client.channels.cache.get('939802381229629440') // In the Main Server
         ScamReviewChannel.send(`${message.author.id} : \`\`\`${message.content.replaceAll('`', '')} - ${message.author.tag}\`\`\``)
@@ -73,48 +73,45 @@ client.on('messageCreate', async (message) => {
         })
     }
     else {
-        // let flagged = false
-        //
-        // let compromisedEmbed = new MessageEmbed().setTitle('Compromised Account')
-        //     .setDescription(`Your account has been compromised and used to promote a scam, as a result you have been banned from ${message.guild.name}. If you still have access to this account please reset your password or delete the account. In future be more careful pressing random data on the internet and never download anything from a website unless it is 100% trustworthy.`)
-        //     .setTimestamp()
-        //     .setThumbnail('https://i.imgur.com/AdjxcEc.png')
-        //     .setFooter({ text: `ScamAvoid 1.2.0 by M1nx`})
-        //
-        // for(link of data){
-        //     if (message.content.includes(link)){ flagged = true }
-        // }
-        //
-        // if(flagged) {
-        //     try {
-        //         let author = message.guild.members.cache.get(message.author.id);
-        //
-        //         (await author.createDM()).send({
-        //             embeds: [compromisedEmbed]
-        //         }).then( test => {
-        //             if(author.bannable){
-        //                 author.ban({
-        //                     days: 7,
-        //                     reason: 'Compromised Account Detected 😞'
-        //                 })
-        //             }
-        //         })
-        //
-        //     } catch (e) {
-        //         console.log(e)
-        //     }
-        // }
+        let flagged = false
+
+        let compromisedEmbed = new MessageEmbed().setTitle('Compromised Account')
+            .setDescription(`Your account has been compromised and used to promote a scam, as a result you have been banned from ${message.guild.name}. If you still have access to this account please reset your password or delete the account. In future be more careful pressing random data on the internet and never download anything from a website unless it is 100% trustworthy.`)
+            .setTimestamp()
+            .setThumbnail('https://i.imgur.com/AdjxcEc.png')
+            .setFooter({ text: `ScamAvoid 1.2.0 by M1nx`})
 
         let links = extractUrls(message.content, true)
-        if(links){
+
+        if(typeof(links) == 'object'){
             for(let link of links){
                 let url = new URL(link)
                 if(client.data.includes(url.hostname)){
-                    message.reply(`true`)
+                    flagged = true
                 }
                 else{
-                    message.reply(`false`)
+                    flagged = false
                 }
+            }
+        }
+
+        if(flagged) {
+            try {
+                let author = message.guild.members.cache.get(message.author.id);
+
+                (await author.createDM()).send({
+                    embeds: [compromisedEmbed]
+                }).then(test => {
+                    if (author.bannable) {
+                        author.ban({
+                            days: 7,
+                            reason: 'Compromised Account Detected 😞'
+                        })
+                    }
+                })
+
+            } catch (e) {
+                console.log(e)
             }
         }
     }
