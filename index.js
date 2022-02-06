@@ -2,7 +2,10 @@ const { Client, Intents, MessageEmbed } = require("discord.js");
 const mongoose = require("mongoose");
 const package = require('./package.json');
 const isUrl = require("url-validator");
+const express = require('express')
 require('dotenv').config()
+const app = express()
+const port = 3000
 
 let data = require('./blacklist.json');
 let users = 0;
@@ -21,8 +24,6 @@ if (process.env['MONGODB']) {
 
 client.db.on('error', console.error.bind(console, 'connection error:'));
 client.models = [];
-
-
 
 // client events
 
@@ -117,3 +118,13 @@ client.on('guildDelete', (guild) =>{
     console.log(`Left: ${guild}`)
 })
 client.login(process.env['TOKEN'])
+
+// web server for uptime check
+
+app.get('/', (req, res) => {
+    res.send('Bot Online!')
+})
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
+})
