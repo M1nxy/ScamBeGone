@@ -28,7 +28,7 @@ client.on('messageCreate', async (message) => {
     if(message.author.bot) return;
     if(message.channel.type == 'DM'){
         let ScamReviewChannel = client.channels.cache.get('939802381229629440') // In the Main Server
-        ScamReviewChannel.send(`${message.author.id}: \`\`\`${message.content.replaceAll('`', '')} - ${message.author.tag}\`\`\``)
+        ScamReviewChannel.send(`${message.author.id} : \`\`\`${message.content.replaceAll('`', '')} - ${message.author.tag}\`\`\``)
             .then(message => message.react('⬆️'))
             .catch(console.error);
         message.reply('Submitted <3')
@@ -98,6 +98,9 @@ client.on('messageCreate', async (message) => {
 client.on('ready', (client) =>{
     console.log(`Logged in as ${client.user.tag}`) // login
 
+    users = 0;
+    guilds = 0;
+
     for(let guild of client.guilds.cache){ // Ready in Servers
         console.log(`Ready in ${guild[1].name} for ${guild[1].memberCount} members.`)
         users += guild[1].memberCount;
@@ -110,6 +113,10 @@ client.on('ready', (client) =>{
 
 client.on('guildCreate', (guild) =>{
     console.log(`Joined: ${guild}`)
+
+    users = 0;
+    guilds = 0;
+
     for(let guild of client.guilds.cache){ // Update presence
         users += guild[1].memberCount;
         guilds += 1;
@@ -119,6 +126,10 @@ client.on('guildCreate', (guild) =>{
 })
 client.on('guildDelete', (guild) =>{
     console.log(`Left: ${guild}`)
+
+    users = 0;
+    guilds = 0;
+    
     for(let guild of client.guilds.cache){ // Update presence
         users += guild[1].memberCount;
         guilds += 1;
