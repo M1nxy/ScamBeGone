@@ -15,7 +15,7 @@ let client = new Client({
 });
 
 client.db = mongoose.connection;
-if (process.env['MONGODB']) {
+if(process.env['MONGODB']) {
     mongoose.connect(process.env['MONGODB']);
 }
 
@@ -33,7 +33,7 @@ client.on('messageCreate', async (message) => {
             .catch(console.error);
         message.reply('Submitted <3')
     }
-    if(message.content == 'scam!credits'){
+   else if(message.content == 'scam!credits'){
         let creditsEmbed = new MessageEmbed().setTitle('Credits')
             .setDescription(`Thank you for using Scam Avoid. To contribute a link send it in a direct message to the bot.`)
             .setTimestamp()
@@ -47,7 +47,7 @@ client.on('messageCreate', async (message) => {
             embeds: [creditsEmbed]
         })
     }
-    if(message.content == 'scam!stats'){
+    else if(message.content == 'scam!stats'){
         let statsEmbed = new MessageEmbed().setTitle('Stats')
             .addField('Links',`${data.links.length}`, true)
             .addField('Users', `${users}`, true)
@@ -59,7 +59,7 @@ client.on('messageCreate', async (message) => {
             embeds: [statsEmbed]
         })
     }
-    if(isUrl(message.content)) {
+    else {
         let flagged = false
 
         let compromisedEmbed = new MessageEmbed().setTitle('Compromised Account')
@@ -72,7 +72,7 @@ client.on('messageCreate', async (message) => {
             if (message.content.includes(link)){ flagged = true }
         }
 
-        if (flagged) {
+        if(flagged) {
             try {
                 let author = message.guild.members.cache.get(message.author.id);
 
@@ -124,12 +124,12 @@ client.on('guildCreate', (guild) =>{
     client.user.setActivity(`${users} Members for scams`, { type: "WATCHING", }); // Set Status
 
 })
-client.on('guildDelete', (guild) =>{
+client.on('guildDelete', (guild) => {
     console.log(`Left: ${guild}`)
 
     users = 0;
     guilds = 0;
-    
+
     for(let guild of client.guilds.cache){ // Update presence
         users += guild[1].memberCount;
         guilds += 1;
