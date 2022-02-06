@@ -104,14 +104,26 @@ client.on('ready', (client) =>{
         guilds += 1;
     }
 
-    client.user.setActivity(`${users} Members for scams.`, { type: "WATCHING", }); // Set Status
+    client.user.setActivity(`${users} Members for scams`, { type: "WATCHING", }); // Set Status
 
 })
 
 client.on('guildCreate', (guild) =>{
     console.log(`Joined: ${guild}`)
+    for(let guild of client.guilds.cache){ // Update presence
+        users += guild[1].memberCount;
+        guilds += 1;
+    }
+    client.user.setActivity(`${users} Members for scams`, { type: "WATCHING", }); // Set Status
+
 })
 client.on('guildDelete', (guild) =>{
     console.log(`Left: ${guild}`)
+    for(let guild of client.guilds.cache){ // Update presence
+        users += guild[1].memberCount;
+        guilds += 1;
+    }
+    client.user.setActivity(`${users} Members for scams`, { type: "WATCHING", }); // Set Status
+
 })
 client.login(process.env['TOKEN'])
