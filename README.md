@@ -5,5 +5,5 @@
 
 ## Invite links
 
-* [Top.gg]("https://top.gg/bot/939520237110460447")
-* [Direct Invite]("https://discord.com/api/oauth2/authorize?client_id=939520237110460447&permissions=8&scope=applications.commands%20bot")
+* [**Top.gg**](https://top.gg/bot/939520237110460447)
+* [**Direct Invite**](https://discord.com/api/oauth2/authorize?client_id=939520237110460447&permissions=8&scope=applications.commands%20bot)
