@@ -72,12 +72,6 @@ client.on('messageCreate', async (message) => {
             embeds: [statsEmbed]
         })
     }
-    else if(message.content == 'scam!eval'){
-        if(message.content.includes('.env')) return;
-        if(message.author.id == '719292655963734056')
-        let evaled = eval(result);
-        message.reply(`\`\`\`${result}\`\`\``)
-    }
     else {
         let flagged = false
 
