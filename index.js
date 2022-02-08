@@ -54,7 +54,7 @@ client.on('messageCreate', async (message) => {
             .addField('Contributer', 'OccultWaifu', true)
             .addField('Contributer', 'Ash', true)
             .addField('Contributer', 'Magnetar',true)
-            .setFooter({ text: `ScamAvoid 1.2.0 by M1nx`})
+            .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
 
         message.reply({
             embeds: [creditsEmbed]
@@ -65,7 +65,7 @@ client.on('messageCreate', async (message) => {
             .addField('Data',`\`${client.data.length}\``, true)
             .addField('Users', `\`${users}\``, true)
             .addField('Guilds', `\`${guilds}\``, true)
-            .setFooter({ text: `ScamAvoid 1.2.0 by M1nx`})
+            .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
             .setTimestamp()
 
         message.reply({
@@ -79,7 +79,7 @@ client.on('messageCreate', async (message) => {
             .setDescription(`Your account has been compromised and used to promote a scam, as a result you have been banned from ${message.guild.name}. If you still have access to this account please reset your password or delete the account. In future be more careful pressing random data on the internet and never download anything from a website unless it is 100% trustworthy.`)
             .setTimestamp()
             .setThumbnail('https://i.imgur.com/AdjxcEc.png')
-            .setFooter({ text: `ScamAvoid 1.2.0 by M1nx`})
+            .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
 
         let links = extractUrls(message.content, true)
 
