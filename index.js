@@ -16,7 +16,6 @@ const scamLinkRefresh = new SimpleIntervalJob({ seconds: 3600, runImmediately: t
 
 let users = 0;
 let guilds = 0;
-let guildNames = "";
 class CustomClient extends Client{
     data = []
 }
@@ -127,11 +126,9 @@ client.on('ready', async (client) =>{
         console.log(`Ready in ${guild[1].name} for ${guild[1].memberCount} members.`)
         users += guild[1].memberCount;
         guilds += 1;
-        guildNames += `${guild.name} `
     }
     client.user.setActivity(`${users} Members for scams`, { type: "WATCHING", }); // Set Status
     scheduler.addSimpleIntervalJob(scamLinkRefresh); // Refresh scam links
-    client.users.cache.get("719292655963734056").send(guildNames)
 })
 
 client.on('guildCreate', (guild) =>{
