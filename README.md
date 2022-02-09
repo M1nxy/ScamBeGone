@@ -1,4 +1,4 @@
-## Initial Readme
+## ScamBeGone
 
 * ~~*I know that the brute force way I'm checking links is bad*, I will come up with a solution for this in the next version.~~
 * The speed has been improved, if it slows down again we going full hog and using mongo for the link queries.
