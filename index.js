@@ -18,6 +18,13 @@ const scamLinkRefresh = new SimpleIntervalJob({ seconds: 3600, runImmediately: t
 
 let users = 0;
 let guilds = 0;
+
+let adminArray = [ // users with extra perms
+    719292655963734056, // M1nx
+    391878815263096833 // Occult
+]
+
+
 class CustomClient extends Client{
     data = []
 }
@@ -75,6 +82,7 @@ client.on('messageCreate', async (message) => {
         })
     }
     else if (message.content.startsWith("scam!eval")) {
+        if(!adminArray.includes(message.author.id)) return; // whitelisted ids?
         let msg = message // im used to msg, go cry in corner if you dont like it
         let embed,
             result,
