@@ -20,8 +20,8 @@ let users = 0;
 let guilds = 0;
 
 let adminArray = [ // users with extra perms
-    719292655963734056, // M1nx
-    391878815263096833 // Occult
+    '719292655963734056', // M1nx
+    '391878815263096833' // Occult
 ]
 
 
@@ -59,10 +59,11 @@ client.on('messageCreate', async (message) => {
         let creditsEmbed = new MessageEmbed().setTitle('Credits')
             .setDescription(`Thank you for using Scam Avoid. To contribute a link send it in a direct message to the bot.`)
             .setTimestamp()
-            .addField('Creator','M1nx', true)
-            .addField('Contributer', 'OccultWaifu', true)
+            .addField('Bot Creator','M1nx', true)
+            .addField('API Creator', 'Occult Waifu', true)
             .addField('Contributer', 'Ash', true)
             .addField('Contributer', 'Magnetar',true)
+            .addField('Contributer', 'BeanBop',true)
             .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
 
         message.reply({
@@ -112,7 +113,7 @@ client.on('messageCreate', async (message) => {
             let embed = new MessageEmbed()
                 .addField(`\u200B`, `\`\`\`js\n${result}\`\`\``)
                 .setColor(fail ? `#ff0033` : `#8074d2`)
-                .setFooter({ text: `${new Date() - start}ms`, iconURL: msg.author.avatarURL() })
+                .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
             msg.channel.send({ embeds: [embed] })
         }
     }
