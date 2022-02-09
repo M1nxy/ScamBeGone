@@ -117,6 +117,15 @@ client.on('messageCreate', async (message) => {
             msg.channel.send({ embeds: [embed] })
         }
     }
+    else if(message.content == 'scam!servers'){
+        if(!adminArray.includes(message.author.id)) return message.reply('Insufficient Permissions <3'); // whitelisted ids?
+        let serverArray = []
+        for(let guild of client.guilds.cache){ // Ready in Servers
+            serverArray.push(`Ready in ${guild[1].name} for ${guild[1].memberCount} members.`)
+        }
+        message.reply(serverArray.join('\n'))
+    }
+
     else {
         let flagged = false
 
