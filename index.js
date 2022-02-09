@@ -4,6 +4,8 @@ import extractUrls from "extract-urls";
 import fetch from "node-fetch";
 import * as dotenv from "dotenv";
 import { ToadScheduler, SimpleIntervalJob, Task } from 'toad-scheduler';
+import hastebin from "hastebin-gen";
+import { inspect } from "util"
 
 dotenv.config();
 const scheduler = new ToadScheduler();
@@ -16,6 +18,13 @@ const scamLinkRefresh = new SimpleIntervalJob({ seconds: 3600, runImmediately: t
 
 let users = 0;
 let guilds = 0;
+
+let adminArray = [ // users with extra perms
+    719292655963734056, // M1nx
+    391878815263096833 // Occult
+]
+
+
 class CustomClient extends Client{
     data = []
 }
@@ -71,6 +80,41 @@ client.on('messageCreate', async (message) => {
         message.reply({
             embeds: [statsEmbed]
         })
+    }
+    else if (message.content.startsWith("scam!eval")) {
+        if(!adminArray.includes(message.author.id)) return; // whitelisted ids?
+        let msg = message // im used to msg, go cry in corner if you dont like it
+        let embed,
+            result,
+            fail,
+            start,
+            argss,
+            lang
+        argss = msg.content.match(/```.*\s*.*\s*```/gs)
+        if(argss == null) return msg.channel.send(`Please provide a valid codeblock.`)
+        argss = argss[0].replace(/\s*```.*\s*/g, '')
+        lang = msg.content.match(/```.*\s*.+\s*```/gs)[0].match(/```.*/g) ?
+            msg.content.match(/```.*\s*.+\s*```/gs)[0].match(/```.*/g)[0].replace('```', '')
+            : 'js'
+
+        try {
+            result = inspect(eval(argss), { depth: 1 })
+        } catch(e) {
+            result = e
+            fail = true
+        }
+
+        if (result.length > 1024 && result.length < 80000) {
+            hastebin(result, { extension: lang, url: 'https://paste.exerra.xyz'} ).then(haste => msg.channel.send(`Result was too big: ` + haste))
+        } else if(result.length > 80000) {
+            msg.channel.send(`I was going to send this in a hastebin, but the result is over 80,000 characters`)
+        } else {
+            let embed = new MessageEmbed()
+                .addField(`\u200B`, `\`\`\`js\n${result}\`\`\``)
+                .setColor(fail ? `#ff0033` : `#8074d2`)
+                .setFooter({ text: `${new Date() - start}ms`, iconURL: msg.author.avatarURL() })
+            msg.channel.send({ embeds: [embed] })
+        }
     }
     else {
         let flagged = false
