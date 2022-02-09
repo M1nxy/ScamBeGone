@@ -106,15 +106,15 @@ client.on('messageCreate', async (message) => {
         }
 
         if (result.length > 1024 && result.length < 80000) {
-            hastebin(result, { extension: lang, url: 'https://paste.exerra.xyz'} ).then(haste => msg.channel.send(`Result was too big: ` + haste))
+            hastebin(result, { extension: lang, url: 'https://paste.exerra.xyz'} ).then(haste => msg.author.send(`Result was too big: ` + haste))
         } else if(result.length > 80000) {
-            msg.channel.send(`I was going to send this in a hastebin, but the result is over 80,000 characters`)
+            msg.author.send(`I was going to send this in a hastebin, but the result is over 80,000 characters`)
         } else {
             let embed = new MessageEmbed()
                 .addField(`\u200B`, `\`\`\`js\n${result}\`\`\``)
                 .setColor(fail ? `#ff0033` : `#8074d2`)
                 .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
-            msg.channel.send({ embeds: [embed] })
+            msg.author.send({ embeds: [embed] })
         }
     }
     else if(message.content == 'scam!servers'){
