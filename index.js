@@ -83,7 +83,7 @@ client.on('messageCreate', async (message) => {
         })
     }
     else if (message.content.startsWith("scam!eval")) {
-        if(!adminArray.includes(message.author.id)) return; // whitelisted ids?
+        if(!adminArray.includes(message.author.id)) return message.reply('Insufficient Permissions <3'); // whitelisted ids?
         let msg = message // im used to msg, go cry in corner if you dont like it
         let embed,
             result,
