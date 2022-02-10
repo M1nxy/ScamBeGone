@@ -7,7 +7,7 @@ export let statsCommand = {
     adminOnly: false,
 
     async execute(message, args, client) {
-        let stats = refreshStats()
+        let stats = await refreshStats()
         let statsEmbed = new MessageEmbed().setTitle('Stats')
             .addField('Data',`\`${stats.data}\``, true)
             .addField('Users', `\`${stats.users}\``, true)
