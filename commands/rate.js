@@ -1,13 +1,13 @@
 import {MessageEmbed} from "discord.js";
 
-export let inviteCommand = {
-    name: 'invite',
-    description: 'Get an invite code for the bot!',
+export let rateCommand = {
+    name: 'rate',
+    description: 'Rate the bot on top.gg!',
     adminOnly: false,
 
     async execute(message, args, client) {
-        let inviteEmbed = new MessageEmbed().setTitle(`Thanks for showing interest in ${client.user.username} ❤`)
-            .setDescription(`Invite Link:\n https://discord.com/api/oauth2/authorize?client_id=939520237110460447&permissions=8&scope=bot%20applications.commands`)
+        let inviteEmbed = new MessageEmbed().setTitle(`Thanks for using ${client.user.username} ❤`)
+            .setDescription(`Top.gg Link:\n https://top.gg/bot/939520237110460447`)
             .setTimestamp()
             .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
         let author = message.guild.members.cache.get(message.author.id);
