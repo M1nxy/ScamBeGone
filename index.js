@@ -30,8 +30,7 @@ const botstatsRefresh = new SimpleIntervalJob({ seconds: 300, runImmediately: tr
 // list of people with trusted status
 const adminArray = [ // users with extra perms
     '719292655963734056', // M1nx
-    '391878815263096833', // Occult
-    '778110527892488233' // Zemyoro
+    '391878815263096833' // Occult
 ]
 
 // Client initialization
