@@ -1,6 +1,7 @@
 import {inspect} from "util";
 import hastebin from "hastebin-gen";
 import {MessageEmbed} from "discord.js";
+import {refreshStats} from "../index.js"; // for on the fly checks with eval command
 
 export let evalCommand = {
     name: 'eval',
