@@ -12,7 +12,7 @@ export let statsCommand = {
             .addField('Data',`\`${stats.data}\``, true)
             .addField('Users', `\`${stats.users}\``, true)
             .addField('Guilds', `\`${stats.guilds}\``, true)
-            .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
+            .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})
             .setTimestamp()
 
         message.reply({

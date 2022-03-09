@@ -37,7 +37,7 @@ export let evalCommand = {
             let embed = new MessageEmbed()
                 .addField(`\u200B`, `\`\`\`js\n${result}\`\`\``)
                 .setColor(fail ? `#ff0033` : `#8074d2`)
-                .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
+                .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})
             message.channel.send({ embeds: [embed] })
         }
     }

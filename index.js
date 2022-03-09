@@ -14,7 +14,7 @@ const scheduler = new ToadScheduler();
 const dataRefresh = new Task('data refresh', async () => {
     let oldData = client.data
     try{
-        client.data = (await (await fetch(`https://api.exerra.xyz/scam/all`)).json())
+        client.data = (await (await fetch(process.env['DATA'] || `https://api.exerra.xyz/scam/all`)).json())
         console.log(`Refreshed ${client.data.length} scam links!`)
     } catch (e) {
         client.data = oldData
@@ -93,7 +93,7 @@ client.on('messageCreate', async (message) => {
             .setDescription(`Your account has been compromised and used to promote a scam, as a result you have been banned from ${message.guild.name}. If you still have access to this account please reset your password or delete the account. In future be more careful pressing random data on the internet and never download anything from a website unless it is 100% trustworthy.`)
             .setTimestamp()
             .setThumbnail('https://i.imgur.com/AdjxcEc.png')
-            .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
+            .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})
 
         if(await filterUrls(message.content.toLowerCase(), client.data)) {
             try {
@@ -143,3 +143,7 @@ client.on('guildMemberRemove', async (guild) => {
 
 // client login
 client.login(process.env['TOKEN'])
+
+// TODO: Database shenigans
+// TODO: Check command
+// TODO: Settings command

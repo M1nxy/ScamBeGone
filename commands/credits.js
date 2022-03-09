@@ -14,7 +14,7 @@ export let creditsCommand = {
             .addField('Contributor', 'Ash', true)
             .addField('Contributor', 'Magnetar',true)
             .addField('Contributor', 'BeanBop',true)
-            .setFooter({ text: `${client.user.username} 1.2.0 by M1nx`})
+            .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})
 
         message.reply({
             embeds: [creditsEmbed]
