@@ -69,6 +69,9 @@ export async function sendLog(content){
 client.on('messageCreate', async (message) => {
     if(message.author.bot) return;
     if(client.data.length == 0) return;
+    if (!message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
+        return;
+    }
 
     if(message.content.startsWith('scam!')){
         let args = (message.content.toLowerCase().split(' ')) // split on ' ' and put into array called args, index one will be prefix+commandName
