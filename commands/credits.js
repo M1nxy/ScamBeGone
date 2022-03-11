@@ -7,7 +7,7 @@ export let creditsCommand = {
 
     async execute(message, args, client) {
         let creditsEmbed = new MessageEmbed().setTitle('Credits')
-            .setDescription(`Thank you for using Scam Avoid. To contribute a link send it in a direct message to the bot.`)
+            .setDescription(`Thank you for using ScamBeGone. To contribute a link, direct message the bot.`)
             .setTimestamp()
             .addField('Bot Creator','M1nx', true)
             .addField('API Creator', 'Occult Waifu', true)

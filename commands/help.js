@@ -19,7 +19,7 @@ export let helpCommand = {
                 let command = client.commands.find(x => x.name === args[0]);
                 if(!command){
                     embed.setTitle(`${command.name[0].toUpperCase() + command.name.substring(1, command.name.length)}`)
-                    embed.setDescription(command.description + '\nmore coming soon™️')
+                    embed.setDescription(`${command.description}\nmore coming soon™️`)
                     embed.setColor('GREEN')
                     message.reply({embeds: [embed]})
                 }

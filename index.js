@@ -93,7 +93,7 @@ client.on('messageCreate', async (message) => {
     }
     else {
         let compromisedEmbed = new MessageEmbed().setTitle('Compromised Account')
-            .setDescription(`Your account has been compromised and used to promote a scam, as a result you have been banned from ${message.guild.name}. If you still have access to this account please reset your password or delete the account. In future be more careful pressing random data on the internet and never download anything from a website unless it is 100% trustworthy.`)
+            .setDescription(`Your account has been compromised and used to promote a scam! As a result, you have been banned from ${message.guild.name}. If you still have access to this account, change your password or delete it. In the future, be more careful with handling random data on the internet and never download anything from websites unless it is 100% trustworthy.`)
             .setTimestamp()
             .setThumbnail('https://i.imgur.com/AdjxcEc.png')
             .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})
@@ -147,6 +147,6 @@ client.on('guildMemberRemove', async (guild) => {
 // client login
 client.login(process.env['TOKEN'])
 
-// TODO: Database shenigans
+// TODO: Database shenanigans
 // TODO: Check command
 // TODO: Settings command
