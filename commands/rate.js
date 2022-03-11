@@ -6,7 +6,7 @@ export let rateCommand = {
     adminOnly: false,
 
     async execute(message, args, client) {
-        let inviteEmbed = new MessageEmbed().setTitle(`Thanks for using ${client.user.username} ❤`)
+        let inviteEmbed = new MessageEmbed().setTitle(`Thank you for using ${client.user.username} ❤`)
             .setDescription(`Top.gg Link:\n https://top.gg/bot/939520237110460447`)
             .setTimestamp()
             .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})

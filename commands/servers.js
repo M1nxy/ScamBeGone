@@ -2,7 +2,7 @@ import {MessageEmbed} from "discord.js";
 
 export let serverCommand = {
     name: 'servers',
-    description: 'List all server names, ids and owners!',
+    description: 'List all server names, IDs and owners!',
     adminOnly: true,
     async execute(message, args, client) {
         let servers = []
