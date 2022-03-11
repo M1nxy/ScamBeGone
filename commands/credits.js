@@ -11,6 +11,7 @@ export let creditsCommand = {
             .setTimestamp()
             .addField('Bot Creator','M1nx', true)
             .addField('API Creator', 'Occult Waifu', true)
+            .addField('Contributor', 'Zemyoro', true)
             .addField('Contributor', 'Ash', true)
             .addField('Contributor', 'Magnetar',true)
             .addField('Contributor', 'BeanBop',true)
