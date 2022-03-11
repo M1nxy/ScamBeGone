@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model} = require("mongoose");
 
 const ServerSchema = new Schema({
     id: Number,
@@ -6,4 +6,4 @@ const ServerSchema = new Schema({
     appeals: Boolean
 });
 
-module.exports = model('Server', ServerSchema);
+module.exports = model("Server", ServerSchema);
