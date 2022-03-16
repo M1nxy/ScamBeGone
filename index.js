@@ -71,27 +71,30 @@ export async function sendLog(content){
 client.on("messageCreate", async (message) => {
     if(message.author.bot) return;
     if(client.data.length == 0) return;
+
+
+    if(message.channel.type == "DM"){
+        sendLog(`Submission by ${message.author.tag}(${message.author.id}): \`\`\`${message.content.replaceAll("`", "")}\`\`\``)
+            .then(message => message.react("⬆️"))
+            .catch(console.error);
+        return message.reply("Submitted <3")
+    }
+
     if (!message.channel.permissionsFor(client.user).has("SEND_MESSAGES")) {
         return;
     }
 
     if(message.content.startsWith("scam!")){
-        let args = (message.content.toLowerCase().split(" ")) // split on " " and put into array called args, index one will be prefix+commandName
-        let commandName = args.shift().slice(5) // remove prefix+commandName from args array and strip prefix from commandName
+        let _args = (message.content.toLowerCase().split(" ")) // split on " " and put into array called _args, index one will be prefix+commandName
+        let commandName = _args.shift().slice(5) // remove prefix+commandName from _args array and strip prefix from commandName
         let command = client.commands.find(x => x.name === commandName) // fetch command from commands array
 
         if(command){
             if(command.adminOnly && !adminArray.includes(message.author.id)){
                 return message.reply("Insufficient Permissions <3"); // whitelisted ids?
             }
-            command.execute(message, args, client) // run command
+            command.execute(message, _args, client) // run command
         }
-    }
-    else if(message.channel.type == "DM"){
-        sendLog(`Submission by ${message.author.tag}(${message.author.id}): \`\`\`${message.content.replaceAll("`", "")}\`\`\``)
-            .then(message => message.react("⬆️"))
-            .catch(console.error);
-        message.reply("Submitted <3")
     }
     else {
         let compromisedEmbed = new MessageEmbed().setTitle("Compromised Account")

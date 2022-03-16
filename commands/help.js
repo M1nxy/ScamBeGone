@@ -8,15 +8,15 @@ export let helpCommand = {
     async execute(message, _args, client) {
         let embed = new MessageEmbed().setFooter({ text: `${client.user.username} 1.2.5 by M1nx`}).setTimestamp()
 
-        if(args.length > 0){
-            if(args.length > 1){
+        if(_args.length > 0){
+            if(_args.length > 1){
                 embed.setTitle("Error")
-                embed.setDescription("Too many args!")
+                embed.setDescription("Too many _args!")
                 embed.setColor("RED")
                 message.reply({embeds: [embed]})
             }
             else {
-                let command = client.commands.find(x => x.name === args[0]);
+                let command = client.commands.find(x => x.name === _args[0]);
                 if(!command){
                     embed.setTitle(`${command.name[0].toUpperCase() + command.name.substring(1, command.name.length)}`)
                     embed.setDescription(`${command.description}\nmore coming soon™️`)
