@@ -1,10 +1,10 @@
 import {MessageEmbed} from "discord.js";
 
 export let serverCommand = {
-    name: 'servers',
-    description: 'List all server names, IDs and owners!',
+    name: "servers",
+    description: "List all server names, IDs and owners!",
     adminOnly: true,
-    async execute(message, args, client) {
+    async execute(message, _args, client) {
         let servers = []
         for(let guild of client.guilds.cache){
             let guildOwner = await client.users.cache.get(guild[1].ownerId)
@@ -23,8 +23,8 @@ export let serverCommand = {
         for(let server of servers){
             let serverEmbed = new MessageEmbed()
                 .setTitle(server.name)
-                .addField('ID', server.ID)
-                .addField('Owner', `<@${server.ownerId}>`)
+                .addField("ID", server.ID)
+                .addField("Owner", `<@${server.ownerId}>`)
                 .setThumbnail(server.icon)
                 .setTimestamp()
                 .setFooter({ text: `${client.user.username} 1.2.5 by M1nx`})

@@ -1,5 +1,8 @@
 node_modules
 .idea
 .env
+
+# Probably a good idea to
+# commit one of these:
 yarn.lock
 package-lock.json
