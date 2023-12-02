@@ -16,7 +16,7 @@ const scheduler = new ToadScheduler();
 const dataRefresh = new Task("data refresh", async () => {
     let oldData = client.data
     try{
-        client.data = (await (await fetch(process.env["DATA"] || "https://api.exerra.xyz/scam/all")).json())
+        client.data = (await (await fetch(process.env["DATA"] || "https://api.exerra.xyz/v2/scam/all/domains")).json()).data
         console.log(`Refreshed ${client.data.length} scam links!`)
     } catch (e) {
         client.data = oldData
